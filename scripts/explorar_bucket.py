@@ -38,9 +38,18 @@ def listar_arquivos(client, model, scenario, variable, max_itens=20):
   Lista os arquivos .nc de um modelo/cenario/variavel especifico
   """
 
-  prefix = f"{BASE_PREFIX}{model}/{scenario}/r111p1f1/{variable}/"
+  prefix = f"{BASE_PREFIX}{model}/{scenario}/r1i1p1f1/{variable}/"
   resp = client.list_objects_v2(Bucket=BUCKET, Prefix=prefix, MaxKeys=max_itens)
   return [obj["Key"] for obj in resp.get("Contents", [])]
+
+def listar_prefixo(client, prefix):
+  """
+  Debug: lista o que existe dentro de um prefixo qualquer.
+  """
+  resp = client.list_objects_v2(Bucket=BUCKET, Prefix=prefix, Delimiter="/")
+  pastas = [p["Prefix"] for p in resp.get("CommonPrefixes", [])]
+  arquivos = [o["Key"] for o in resp.get("Contents", [])]
+  return pastas, arquivos
 
 
 if __name__ == "__main__":
@@ -48,6 +57,7 @@ if __name__ == "__main__":
   parser.add_argument("--model", default=None, help="Ex: ACCESS-CM2")
   parser.add_argument("--scenario", default="historical")
   parser.add_argument("--variable", default="pr")
+  parser.add_argument("--debug-prefix", default=None, help="Lista o conteudo bruto")
   args = parser.parse_args()
 
   client = get_client()
@@ -56,8 +66,16 @@ if __name__ == "__main__":
     print("Modelo disponiveis: ")
     for m in listar_modelos(client):
       print(" -", m)
-
+  elif args.debug_prefix:
+    pastas, arquivos = listar_prefixo(client, args.debug_prefix)
+    print("Pastas:")
+    for p in pastas:
+      print(" -", p)
+    print("Arquivos")
+    for a in arquivos:
+      print(" -", a)
   else:
-    print(f"Arquivos para {args.model}/{args.scenario}/{args.variable}:") 
+    print(f"Arquivos para {args.model}/{args.scenario}/{args.variable}:")
     for key in listar_arquivos(client, args.model, args.scenario, args.variable):
-      print(" -", key) 
+      print(" -", key) #jesus que complicacao pra fazer essa poha
+      #FUNCIONO
