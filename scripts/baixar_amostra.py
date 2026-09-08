@@ -1,3 +1,10 @@
+"""
+Baixa UM arquivo de amostra do NEX-GDDP-CMIP6 (S3, acesso anonimo) e
+inspeciona sua estrutura com xarray. Objetivo: confirmar dimensoes,
+resolucao e como aparecem valores ausentes, antes de decidir download
+em maior escala.
+"""
+
 import argparse
 import os
 import boto3
