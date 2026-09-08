@@ -59,5 +59,5 @@ if __name__ == "__main__":
 
   else:
     print(f"Arquivos para {args.model}/{args.scenario}/{args.variable}:") 
-    for key in listar_modelos(client, args.model, args.scenario, args.variable):
+    for key in listar_arquivos(client, args.model, args.scenario, args.variable):
       print(" -", key) 
