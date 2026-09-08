@@ -1,0 +1,8 @@
+boto3
+xarray
+netCDF4
+h5netcdf
+pandas
+numpy
+matplotlib
+python-dotenv
