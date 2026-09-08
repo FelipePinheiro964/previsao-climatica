@@ -1,0 +1,26 @@
+# Credenciais / segredos — nunca versionar
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+**/secrets/
+
+# Dados brutos (NetCDF são grandes, não versionar no git)
+data/raw/*
+!data/raw/.gitkeep
+
+# Dados processados grandes
+data/processed/*.nc
+!data/processed/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# SO / editor
+.DS_Store
+.vscode/
