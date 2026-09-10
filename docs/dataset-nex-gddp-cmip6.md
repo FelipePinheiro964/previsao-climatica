@@ -9,3 +9,15 @@
 - Contagem de dias (365 para 1950, ano não bissexto) confere.
 - Conclusão: os dados sobre terra estão íntegros; o alto % de NaN é
   esperado e não indica problema de qualidade da fonte.
+
+## Variáveis definidas (fechado)
+
+- `tas` — temperatura média diária (K)
+- `tasmax` — temperatura máxima diária (K)
+- `tasmin` — temperatura mínima diária (K)
+- `pr` — precipitação (kg/m²/s)
+
+Validado com amostra real (ACCESS-CM2, historical, 1950): tas e pr
+conferidos sem inconsistências de faixa física; tasmax/tasmin assumidos
+consistentes por virem da mesma pipeline/fonte, a confirmar no primeiro
+download real de cada.
