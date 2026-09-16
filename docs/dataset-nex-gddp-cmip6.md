@@ -21,3 +21,13 @@ Validado com amostra real (ACCESS-CM2, historical, 1950): tas e pr
 conferidos sem inconsistências de faixa física; tasmax/tasmin assumidos
 consistentes por virem da mesma pipeline/fonte, a confirmar no primeiro
 download real de cada.
+
+## Resolução espacial e temporal (fechado)
+
+- Confirmado via amostra real: grade 0.25° (25km), 600×1440 pontos globais, frequência diária.
+- Comparação entre modelos diferentes não é aplicável: o NEX-GDDP-CMIP6 usa
+  bias correction/spatial disaggregation (BCSD) para reprojetar todos os 34
+  modelos disponíveis para o mesmo grid de 0.25° e mesma frequência diária,
+  não é uma propriedade que varia modelo a modelo dentro deste dataset.
+  Fonte: documentação técnica do NEX-GDDP-CMIP6 (NASA NCCS / Thrasher et al. 2022).
+- Resolução validada como consistente entre variáveis do mesmo modelo (pr e tas).
