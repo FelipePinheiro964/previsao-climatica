@@ -31,3 +31,19 @@ download real de cada.
   não é uma propriedade que varia modelo a modelo dentro deste dataset.
   Fonte: documentação técnica do NEX-GDDP-CMIP6 (NASA NCCS / Thrasher et al. 2022).
 - Resolução validada como consistente entre variáveis do mesmo modelo (pr e tas).
+
+## Decisão: Earth Engine em vez de Databricks
+
+Avaliado Databricks e descartado: no plano gratuito, o acesso de saída à
+internet é restrito a domínios confiáveis (não garante acesso ao bucket S3
+da NASA) e há cota de uso que pode pausar o compute no meio de um job grande.
+
+Vamos seguir com o Google Earth Engine: o NEX-GDDP-CMIP6 já está hospedado
+lá (`NASA/GDDP-CMIP6`), e a média sobre o Brasil é calculada no servidor do
+Google — sem baixar os arquivos brutos, resolvendo o problema de banda/peso
+na raiz.
+
+Setup do Earth Engine ainda não foi feito, deve levar um tempo pra configurar
+(conta, projeto, lib `earthengine-api`). Enquanto isso, espaço em disco local
+foi liberado, então não há mais urgência de espaço — só a urgência de tempo
+de download que motivou essa avaliação.
